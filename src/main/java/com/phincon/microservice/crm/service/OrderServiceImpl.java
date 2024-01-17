@@ -9,7 +9,6 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.messaging.Message;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -34,8 +33,6 @@ public class OrderServiceImpl implements OrderService {
         log.info("Received <" + orderGet + ">");
         createOrder(orderGet.getPayload()).subscribe();
     }
-
-    @Transactional
     @Override
     public Mono<Orders> createOrder(Orders order) {
         try {
