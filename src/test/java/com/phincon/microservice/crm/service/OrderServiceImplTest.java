@@ -33,7 +33,7 @@ class OrderServiceImplTest {
         order.setPrice(100L);
         OrderRepository orderRepository = mock(OrderRepository.class);
         when(orderRepository.save(any(Orders.class))).thenReturn(Mono.just(order));
-        OrderService orderService = new OrderServiceImpl(orderRepository);
+        OrderService orderService = new OrderServiceImpl();
         Mono<Orders> result = orderService.createOrder(order);
         StepVerifier.create(result)
                 .expectNext(order)
