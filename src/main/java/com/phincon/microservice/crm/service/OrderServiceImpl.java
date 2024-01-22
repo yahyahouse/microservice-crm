@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
-    @Scheduled(cron = "*/10 * * * * ?")
+    @Scheduled(cron = "* * * * * ?")
     public void getOrders() {
         Flux<Orders> ordersFlux = orderRepository.findAll();
         ordersFlux.filter(order -> !sentOrders.contains(order.getId()))
